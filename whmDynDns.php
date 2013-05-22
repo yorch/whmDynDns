@@ -33,7 +33,7 @@ function checkZone($zone) {
 	if($result != false) {
 		$results = json_decode($result, true);
 		foreach($results['result'][0]['record'] AS $onerecord) {
-			if($onerecord['name'] == fullRecordName($zone)."." && $onerecord['type'] == "A") {
+			if(array_key_exists('name', $onerecord) && $onerecord['name'] == fullRecordName($zone)."." && $onerecord['type'] == "A") {
 				$lines[] = array('Line' => $onerecord['Line'], 'IP' => $onerecord['address'], 'TTL' => $onerecord['ttl']);
 			}
 		}
